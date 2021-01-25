@@ -1,5 +1,6 @@
 #include "cadre.h"
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 
@@ -87,14 +88,31 @@ void cadre::drawCadre() const
 
 void cadre::rotateCadre(float angle)
 {
+	const float PI = 3.1415f;
+
 	float fX1 = this->m_fX + this->m_fWidth;
 	float fY1 = this->m_fY;
+
+	fX1 = cos(angle * (PI / 180)) * (this->m_fX - fX1) - sin(angle * (PI / 180)) * (this->m_fY - fY1) + this->m_fX;
+	fY1 = sin(angle * (PI / 180)) * (this->m_fX - fX1) - cos(angle * (PI / 180)) * (this->m_fY - fY1) + this->m_fY;
+
+	cout << "X1 : " << fX1 << " Y1 : " << fY1 << endl;
 
 	float fX2 = this->m_fX;
 	float fY2 = this->m_fY + this->m_fHeight;
 
+	fX2 = cos(angle * (PI / 180)) * (this->m_fX - fX2) - sin(angle * (PI / 180)) * (this->m_fY - fY2) + this->m_fX;
+	fY2 = sin(angle * (PI / 180)) * (this->m_fX - fX2) - cos(angle * (PI / 180)) * (this->m_fY - fY2) + this->m_fY;
+
+	cout << "X2 : " << fX2 << " Y2 : " << fY2 << endl;
+
 	float fX3 = this->m_fX + this->m_fWidth;
 	float fY3 = this->m_fY + this->m_fHeight;
+
+	fX3 = cos(angle * (PI / 180)) * (this->m_fX - fX3) - sin(angle * (PI / 180)) * (this->m_fY - fY3) + this->m_fX;
+	fY3 = sin(angle * (PI / 180)) * (this->m_fX - fX3) - cos(angle * (PI / 180)) * (this->m_fY - fY3) + this->m_fY;
+
+	cout << "X3 : " << fX3 << " Y3 : " << fY3 << endl;
 }
 
 
